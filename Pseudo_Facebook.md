@@ -48,7 +48,7 @@ ggplot(aes(x = age, y = friend_count), data = pf) +
   scale_x_continuous("User Age", limits = c(13, 90)) 
 ```
 
-    ## Warning: Removed 5200 rows containing missing values (geom_point).
+    ## Warning: Removed 5172 rows containing missing values (geom_point).
 
 ![](Pseudo_Facebook_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
@@ -71,7 +71,7 @@ ggplot(aes(x = age, y = friend_count), data = pf) +
   coord_trans(y = 'sqrt')
 ```
 
-    ## Warning: Removed 5175 rows containing missing values (geom_point).
+    ## Warning: Removed 5187 rows containing missing values (geom_point).
 
 ![](Pseudo_Facebook_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
@@ -192,7 +192,7 @@ ggplot(aes(x = age, y = friendships_initiated), data = pf) +
 
 ![](Pseudo_Facebook_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
-The distribution is similar to friend count, but does not reach the same extremes. This makes sense because accross all users the sum of friend count will be twice that of total friendships initiated. In the former, each friendship is counted twice-once for each user in a friendship.
+The distribution is similar to friend count, but does not reach the same extremes. This makes sense because across all users the sum of friend count will be twice that of total friendships initiated. In the former, each friendship is counted twice-once for each user in a friendship.
 
 If we divide the sum of friend count by the sum of friendships initiated in this dataset, we find that the ratio is nearly 2.
 

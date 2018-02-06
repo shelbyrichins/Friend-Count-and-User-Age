@@ -142,7 +142,7 @@ ggplot(aes(x = age, y = friendships_initiated), data = pf) +
             linetype = 1, color = 'blue') 
 ```
 
-The distribution is similar to friend count, but does not reach the same extremes. This makes sense because accross all users the sum of friend count will be twice that of total friendships initiated. In the former, each friendship is counted twice-once for each user in a friendship. 
+The distribution is similar to friend count, but does not reach the same extremes. This makes sense because across all users the sum of friend count will be twice that of total friendships initiated. In the former, each friendship is counted twice-once for each user in a friendship. 
 
 If we divide the sum of friend count by the sum of friendships initiated in this dataset, we find that the ratio is nearly 2. 
 
