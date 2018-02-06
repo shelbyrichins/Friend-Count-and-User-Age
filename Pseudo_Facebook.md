@@ -2,7 +2,7 @@ Example Exploration using Pseudo-Facebook Data
 ================
 
 ``` r
-setwd('C:/Users/Shelby/Desktop/EDA/Psuedo Facebook')
+setwd('C:/Users/Shelby/Desktop/EDA/Pseudo Facebook/Friend-Count-and-User-Age')
 library(ggplot2)
 library(ggthemes)
 pf <- read.csv('pseudo_facebook.tsv', sep = '\t')
@@ -48,7 +48,7 @@ ggplot(aes(x = age, y = friend_count), data = pf) +
   scale_x_continuous("User Age", limits = c(13, 90)) 
 ```
 
-    ## Warning: Removed 5193 rows containing missing values (geom_point).
+    ## Warning: Removed 5200 rows containing missing values (geom_point).
 
 ![](Pseudo_Facebook_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
@@ -71,7 +71,7 @@ ggplot(aes(x = age, y = friend_count), data = pf) +
   coord_trans(y = 'sqrt')
 ```
 
-    ## Warning: Removed 5181 rows containing missing values (geom_point).
+    ## Warning: Removed 5175 rows containing missing values (geom_point).
 
 ![](Pseudo_Facebook_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
@@ -131,7 +131,7 @@ ggplot(aes(x = age, y = friend_count_mean), data = pf.fc_by_age) +
 ggplot(aes(x = age, y = friend_count), data = pf) +
   geom_point(alpha = 1/20, 
              position = position_jitter(w = 0.4, h = 0),
-             color = 'grey') + 
+             color = 'grey40') + 
   theme_minimal() +
   scale_y_continuous("Friend Count") +
   scale_x_continuous("User Age") +
@@ -168,14 +168,27 @@ Friendships Initiated vs. User Age
 
 ``` r
 ggplot(aes(x = age, y = friendships_initiated), data = pf) +
-  geom_point(alpha = 1/20, position = position_jitter(w = 0.4, h = 0)) + 
+  geom_point(alpha = 1/20, 
+             position = position_jitter(w = 0.4, h = 0),
+             color = 'grey40') + 
   theme_minimal() +
   scale_y_continuous("Friendships Initiated") +
-  scale_x_continuous("User Age", limits = c(13, 90)) +
-  coord_trans(y = "sqrt")
+  scale_x_continuous("User Age") +
+  coord_cartesian(xlim = c(13, 90), ylim = c(0, 1000)) +
+  geom_line(stat = 'summary', fun.y = mean) +
+  geom_line(stat = 'summary', 
+            fun.y = quantile,
+            fun.args = list(probs = 0.1),
+            linetype = 2, color = 'grey25') +
+  geom_line(stat = 'summary',
+            fun.y = quantile,
+            fun.args = list(probs = 0.9),
+            linetype = 2, color = 'grey25') +
+  geom_line(stat = 'summary',
+            fun.y = quantile,
+            fun.args = list(probs = 0.5),
+            linetype = 1, color = 'blue') 
 ```
-
-    ## Warning: Removed 5189 rows containing missing values (geom_point).
 
 ![](Pseudo_Facebook_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
